@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+    <script>
+        // 禁用右鍵 (保留原設定)
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="玉里地政事務所 - USB資訊安全宣導">
+    <meta property="og:description" content="預先格式化，是保護資訊安全的第一道防線。帶您了解USB儲存媒體的安全使用規範。">
+    <title>花蓮縣玉里地政事務所 - USB儲存媒體資訊安全宣導報告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Noto Sans TC"', 'sans-serif'] },
+                    colors: {
+                        primary: '#0e7490', // cyan-700
+                        secondary: '#164e63', // cyan-900
+                        accent: '#06b6d4', // cyan-500
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+            overflow-x: hidden;
+        }
+
+        /* SVG Animations */
+        @keyframes scan {
+            0%, 100% { transform: translateY(0); opacity: 0; }
+            10%, 90% { opacity: 1; }
+            50% { transform: translateY(120px); }
+        }
+        .animate-scan {
+            animation: scan 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(6, 182, 212, 0.4)); }
+            50% { filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.8)); }
+        }
+        .glow-effect {
+            animation: pulse-glow 3s infinite;
+        }
+
+        /* Scroll Reveal Utility */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar for Mobile Cards */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Accordion transition */
+        .accordion-content {
+            transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .accordion-content.open {
+            opacity: 1;
+        }
+
+        /* Security Bar Transition */
+        #security-bar {
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.8s ease;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-accent selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 sm:h-20">
+                <div class="flex items-center gap-3">
+                    <img src="https://ws.hl.gov.tw/001/Upload/404/sites/pagebackimage/fff729bd-7167-4ee5-a6b9-98742ea754ce.gif" 
+                         alt="玉里地政事務所 Logo" class="h-10 sm:h-12 w-auto object-contain">
+                    <span class="font-bold text-secondary text-lg sm:text-xl tracking-wide hidden sm:block">USB儲存媒體資訊安全宣導報告</span>
+                </div>
+                <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
+                    <a href="#risks" class="hover:text-primary transition-colors">風險解析</a>
+                    <a href="#formatting" class="hover:text-primary transition-colors">解決方案</a>
+                    <a href="#rules" class="hover:text-primary transition-colors">安全守則</a>
+                </div>
+                <!-- Mobile Menu Button (Visual only for landing page) -->
+                <div class="md:hidden flex items-center">
+                    <span class="text-xs font-bold text-white bg-primary px-3 py-1 rounded-full">資安宣導</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-24 pb-12 sm:pt-32 sm:pb-24 lg:pt-40 lg:pb-32 overflow-hidden bg-gradient-to-br from-slate-900 via-secondary to-slate-800">
+        <!-- Background Decor -->
+        <div class="absolute inset-0 z-0 opacity-20">
+            <div class="absolute top-0 -left-1/4 w-1/2 h-full bg-accent blur-[120px] rounded-full mix-blend-screen"></div>
+            <div class="absolute bottom-0 -right-1/4 w-1/2 h-full bg-blue-500 blur-[120px] rounded-full mix-blend-screen"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
+                
+                <!-- Text Content -->
+                <div class="lg:col-span-6 text-center lg:text-left mb-12 lg:mb-0 reveal active">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-accent text-sm font-bold tracking-widest uppercase mb-6">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        資訊安全宣導
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-5xl font-black text-white leading-tight mb-6">
+                        便利背後的隱形威脅<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">USB 資安互動指南</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        在高度數位化的環境中，USB 隨身碟已成必備工具，但也是惡意軟體的溫床。掌握<strong class="text-white">「先格式化，再使用」</strong>的黃金原則，建立堅不可摧的第一道防線。
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#formatting" class="px-8 py-4 bg-accent hover:bg-cyan-400 text-slate-900 font-bold rounded-lg shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all transform hover:-translate-y-1 text-center">
+                            查看安全解決方案
+                        </a>
+                        <a href="#risks" class="px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold rounded-lg backdrop-blur-sm transition-all text-center">
+                            了解潛在風險
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Animated SVG Graphic -->
+                <div class="lg:col-span-6 flex justify-center lg:justify-end reveal active">
+                    <div class="relative w-full max-w-[400px] aspect-square animate-float">
+                        <!-- Custom SVG Illustration -->
+                        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-2xl">
+                            <!-- Shield Background -->
+                            <path d="M200 40 L320 90 L320 200 C320 280 270 340 200 380 C130 340 80 280 80 200 L80 90 Z" fill="rgba(6, 182, 212, 0.1)" stroke="#06b6d4" stroke-width="4" stroke-linejoin="round" class="glow-effect"/>
+                            
+                            <!-- USB Drive Body -->
+                            <rect x="150" y="140" width="100" height="150" rx="15" fill="#1e293b" stroke="#334155" stroke-width="4"/>
+                            <!-- USB Connector -->
+                            <rect x="165" y="90" width="70" height="50" rx="5" fill="#94a3b8" stroke="#cbd5e1" stroke-width="3"/>
+                            <rect x="175" y="105" width="15" height="15" fill="#1e293b"/>
+                            <rect x="210" y="105" width="15" height="15" fill="#1e293b"/>
+                            
+                            <!-- USB Details -->
+                            <circle cx="200" cy="215" r="25" fill="#0f172a" stroke="#06b6d4" stroke-width="3"/>
+                            <path d="M190 215 L205 230 L220 200" fill="none" stroke="#06b6d4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            
+                            <!-- Scanning Line Effect -->
+                            <g class="animate-scan">
+                                <line x1="120" y1="130" x2="280" y2="130" stroke="#22d3ee" stroke-width="4" filter="drop-shadow(0 0 8px #22d3ee)"/>
+                                <polygon points="200,130 120,170 280,170" fill="url(#scanGradient)" opacity="0.6"/>
+                            </g>
+                            
+                            <!-- Data Nodes -->
+                            <circle cx="100" cy="150" r="4" fill="#38bdf8"/>
+                            <circle cx="300" cy="250" r="4" fill="#38bdf8"/>
+                            <circle cx="320" cy="130" r="4" fill="#38bdf8"/>
+                            <circle cx="90" cy="280" r="4" fill="#38bdf8"/>
+                            <path d="M100 150 Q 150 180 150 200" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4" opacity="0.5"/>
+                            <path d="M300 250 Q 250 220 250 200" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4" opacity="0.5"/>
+                            
+                            <defs>
+                                <linearGradient id="scanGradient" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.8"/>
+                                    <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Wave Curve -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10 transform translate-y-[1px]">
+            <svg class="relative block w-full h-[40px] md:h-[80px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.06,151.71,131.17,235.39,113.84,265.4,107.6,294.62,91.03,321.39,56.44Z" fill="#f8fafc"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- [Specific Requirement] Mobile Only: Quick Swipe Guide -->
+    <section class="md:hidden bg-slate-50 py-8 border-b border-slate-200">
+        <div class="px-4 mb-4">
+            <h2 class="text-xl font-bold text-secondary flex items-center gap-2">
+                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                資安重點快覽
+            </h2>
+            <p class="text-xs text-slate-500 mt-1">左右滑動查看安全守則</p>
+        </div>
+        
+        <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 px-4 pb-4 hide-scrollbar">
+            <!-- Card 1 -->
+            <div class="snap-center shrink-0 w-[85vw] max-w-[300px] bg-white rounded-2xl p-5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] border border-slate-100">
+                <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-500 mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                </div>
+                <h3 class="font-bold text-slate-800 text-lg mb-2">拒絕來路不明</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">撿到或贈品的 USB 絕對不要插入公務電腦，這往往是駭客的實體陷阱。</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="snap-center shrink-0 w-[85vw] max-w-[300px] bg-white rounded-2xl p-5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] border border-slate-100">
+                <div class="w-12 h-12 rounded-full bg-cyan-100 flex items-center justify-center text-cyan-600 mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                </div>
+                <h3 class="font-bold text-slate-800 text-lg mb-2">使用前必格式化</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">單純刪除檔案無效。請使用「完整格式化」徹底清除舊資料與潛藏病毒。</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="snap-center shrink-0 w-[85vw] max-w-[300px] bg-white rounded-2xl p-5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] border border-slate-100">
+                <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 mb-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                </div>
+                <h3 class="font-bold text-slate-800 text-lg mb-2">公私分明專用</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">公務用與個人用 USB 必須分開，避免家中電腦的病毒交叉感染至辦公室。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risks Section -->
+    <section id="risks" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+            <h2 class="text-base text-accent font-bold tracking-wide uppercase mb-2">Core Threats</h2>
+            <p class="text-3xl md:text-4xl font-extrabold text-secondary">三大核心風險：看不見的危機</p>
+            <div class="w-20 h-1 bg-accent mx-auto mt-6 rounded-full"></div>
+            <p class="mt-6 text-slate-600 max-w-2xl mx-auto text-lg">插入來路不明或未清空的 USB 時，您的電腦正暴露在以下嚴重威脅中。</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Risk 1 -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group reveal">
+                <div class="w-16 h-16 rounded-xl bg-red-50 text-red-500 flex items-center justify-center mb-6 group-hover:bg-red-500 group-hover:text-white transition-colors">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-3">惡意軟體潛伏</h3>
+                <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                    病毒與勒索軟體可偽裝成正常檔案。插入受感染的 USB 後，程式可能在背景<strong class="text-red-500">自動執行</strong>，瞬間癱瘓系統或加密重要資料。
+                </p>
+            </div>
+            
+            <!-- Risk 2 -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group reveal" style="transition-delay: 100ms;">
+                <div class="w-16 h-16 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center mb-6 group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-3">殘留資料洩密</h3>
+                <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                    按下「刪除」只是移除檔案索引，<strong class="text-amber-600">資料本體仍在磁區上</strong>。有心人士可輕易使用救援軟體還原機密公文或個資。
+                </p>
+            </div>
+
+            <!-- Risk 3 -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group reveal" style="transition-delay: 200ms;">
+                <div class="w-16 h-16 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center mb-6 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-3">韌體層級攻擊 (BadUSB)</h3>
+                <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                    攻擊者修改 USB 內部的控制晶片，使其插入時被電腦<strong class="text-purple-600">誤認為鍵盤</strong>，進而以極快速度自動輸入惡意指令，防不勝防。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Formatting Solution Section -->
+    <section id="formatting" class="py-16 md:py-24 bg-slate-900 relative overflow-hidden">
+        <!-- Decor -->
+        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-primary rounded-full blur-[100px] opacity-20"></div>
+        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-accent rounded-full blur-[100px] opacity-20"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-white">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4">關鍵防禦：正確清空 USB</h2>
+                <p class="text-slate-400">不同的清除方式，安全性天差地遠。點擊下方按鈕，了解哪種方式才安全。</p>
+            </div>
+
+            <div class="bg-slate-800/50 backdrop-blur-lg rounded-3xl p-6 md:p-10 border border-slate-700 reveal shadow-2xl">
+                
+                <!-- Visual Meter -->
+                <div class="mb-10">
+                    <div class="flex justify-between items-end mb-3">
+                        <span class="text-sm font-bold text-slate-300 uppercase tracking-wider">資安防護等級</span>
+                        <span id="security-score" class="text-3xl font-black text-green-400">95%</span>
+                    </div>
+                    <div class="h-6 w-full bg-slate-700 rounded-full overflow-hidden p-1">
+                        <div id="security-bar" class="h-full bg-green-500 rounded-full w-[95%] relative overflow-hidden">
+                            <!-- Shimmer effect -->
+                            <div class="absolute inset-0 bg-white/20 w-full h-full transform -skew-x-12 -translate-x-full animate-[shimmer_2s_infinite]"></div>
+                        </div>
+                    </div>
+                    <style>
+                        @keyframes shimmer {
+                            100% { transform: translateX(100%); }
+                        }
+                    </style>
+                </div>
+
+                <!-- Interactive Buttons -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                    <button onclick="updateFormat(0)" id="btn-0" class="format-btn px-6 py-4 rounded-xl font-bold transition-all border-2 border-slate-600 text-slate-300 hover:bg-slate-700">手動刪除</button>
+                    <button onclick="updateFormat(1)" id="btn-1" class="format-btn px-6 py-4 rounded-xl font-bold transition-all border-2 border-slate-600 text-slate-300 hover:bg-slate-700">快速格式化</button>
+                    <button onclick="updateFormat(2)" id="btn-2" class="format-btn px-6 py-4 rounded-xl font-bold transition-all border-2 border-accent bg-accent/20 text-white shadow-[0_0_15px_rgba(6,182,212,0.3)]">完整格式化</button>
+                </div>
+
+                <!-- Detail Panel -->
+                <div id="format-info" class="bg-slate-900/80 rounded-2xl p-6 border-l-4 border-green-500 transition-all duration-300">
+                    <h4 id="info-title" class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        完整格式化 (最推薦方案)
+                    </h4>
+                    <p id="info-desc" class="text-slate-300 leading-relaxed text-sm md:text-base">
+                        系統會逐一檢查磁區並<strong class="text-green-400">將所有磁區覆寫為零</strong>。徹底抹除舊資料，確保無法使用軟體復原，是清除潛伏威脅與防止資料外洩最徹底、最安全的標準做法。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rules Section (Accordion) -->
+    <section id="rules" class="py-16 md:py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 reveal">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-secondary mb-4">日常四大安全守則</h2>
+            <p class="text-slate-600">除了格式化之外，建立良好的使用習慣更是長久之計。</p>
+        </div>
+
+        <div class="space-y-4 reveal">
+            <!-- Rule 1 -->
+            <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden rule-card">
+                <button class="w-full px-6 py-5 flex justify-between items-center bg-white hover:bg-slate-50 transition-colors focus:outline-none" onclick="toggleAccordion(this)">
+                    <div class="flex items-center gap-4">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-cyan-100 text-cyan-700 font-bold text-sm">1</span>
+                        <h3 class="font-bold text-lg text-slate-800 text-left">來源不明，絕對不用</h3>
+                    </div>
+                    <svg class="w-5 h-5 text-slate-400 transform transition-transform duration-300 icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content bg-slate-50 border-t border-slate-100">
+                    <div class="p-6 text-slate-600 leading-relaxed">
+                        路邊撿到、活動贈品或來路不明的 USB 隨身碟，極有可能是駭客故意放置的攻擊誘餌（稱為 Drop Attack）。為了保護機關網路安全，務必拒絕將未經核准的裝置插入辦公電腦。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rule 2 -->
+            <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden rule-card">
+                <button class="w-full px-6 py-5 flex justify-between items-center bg-white hover:bg-slate-50 transition-colors focus:outline-none" onclick="toggleAccordion(this)">
+                    <div class="flex items-center gap-4">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-cyan-100 text-cyan-700 font-bold text-sm">2</span>
+                        <h3 class="font-bold text-lg text-slate-800 text-left">公私分明，專碟專用</h3>
+                    </div>
+                    <svg class="w-5 h-5 text-slate-400 transform transition-transform duration-300 icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content bg-slate-50 border-t border-slate-100">
+                    <div class="p-6 text-slate-600 leading-relaxed">
+                        強烈建議將公務使用與個人使用的 USB 隨身碟嚴格分開。家中電腦若未受完善防護，很容易將潛伏病毒透過隨身碟帶入辦公環境，造成不可挽回的損失。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rule 3 -->
+            <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden rule-card">
+                <button class="w-full px-6 py-5 flex justify-between items-center bg-white hover:bg-slate-50 transition-colors focus:outline-none" onclick="toggleAccordion(this)">
+                    <div class="flex items-center gap-4">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-cyan-100 text-cyan-700 font-bold text-sm">3</span>
+                        <h3 class="font-bold text-lg text-slate-800 text-left">防毒掃描，即時防護</h3>
+                    </div>
+                    <svg class="w-5 h-5 text-slate-400 transform transition-transform duration-300 icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content bg-slate-50 border-t border-slate-100">
+                    <div class="p-6 text-slate-600 leading-relaxed">
+                        確保辦公電腦上的防毒軟體病毒碼更新至最新版本，並務必開啟「插入外接裝置時自動掃描」功能。這能在第一時間攔截已知的惡意程式。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rule 4 -->
+            <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden rule-card">
+                <button class="w-full px-6 py-5 flex justify-between items-center bg-white hover:bg-slate-50 transition-colors focus:outline-none" onclick="toggleAccordion(this)">
+                    <div class="flex items-center gap-4">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-cyan-100 text-cyan-700 font-bold text-sm">4</span>
+                        <h3 class="font-bold text-lg text-slate-800 text-left">定期備份，3-2-1 原則</h3>
+                    </div>
+                    <svg class="w-5 h-5 text-slate-400 transform transition-transform duration-300 icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="accordion-content bg-slate-50 border-t border-slate-100">
+                    <div class="p-6 text-slate-600 leading-relaxed">
+                        USB 隨身碟屬於易損品，且容易遺失。重要的公務資料應遵循 3-2-1 備份原則：至少保留 <strong class="text-secondary">3</strong> 份拷貝，存放在 <strong class="text-secondary">2</strong> 種不同的儲存媒體，且其中 <strong class="text-secondary">1</strong> 份存放在異地（或安全的雲端/伺服器）。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-6 flex justify-center">
+                <div class="p-4 bg-slate-800 rounded-2xl inline-block border border-slate-700">
+                    <p class="text-white font-bold text-lg flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        零信任，始於格式化
+                    </p>
+                </div>
+            </div>
+            <p class="mb-2 text-sm">永遠不要假設任何外部儲存媒體是安全的。養成良好習慣，保護機關資訊資產。</p>
+            <p class="text-xs text-slate-500 mt-8">&copy; 花蓮縣玉里地政事務所 資訊安全宣導專區. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Data for Interactive Formatting Section
+        const formatData = [
+            {
+                score: '10%',
+                color: 'bg-red-500',
+                textColor: 'text-red-500',
+                borderColor: 'border-red-500',
+                title: '手動刪除 (極度危險)',
+                icon: '<svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>',
+                desc: '僅移除路徑標記，<strong class="text-red-400">資料本體完全保留在磁區上</strong>。不僅病毒與隱藏檔案依然存在，任何人都能輕易透過免費軟體還原您"刪除"的機密檔案。'
+            },
+            {
+                score: '40%',
+                color: 'bg-amber-500',
+                textColor: 'text-amber-400',
+                borderColor: 'border-amber-500',
+                title: '快速格式化 (中度風險)',
+                icon: '<svg class="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>',
+                desc: '重置了檔案系統表，速度雖快但<strong class="text-amber-400">不抹除實體磁區數據</strong>。雖然能讓一般病毒失去連結，但專業軟體仍能輕易找回大部分的原始資料。'
+            },
+            {
+                score: '95%',
+                color: 'bg-green-500',
+                textColor: 'text-green-400',
+                borderColor: 'border-green-500',
+                title: '完整格式化 (最推薦方案)',
+                icon: '<svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>',
+                desc: '系統會逐一檢查磁區並<strong class="text-green-400">將所有磁區覆寫為零</strong>。徹底抹除舊資料，確保無法使用軟體復原，是清除潛伏威脅與防止資料外洩最徹底、最安全的標準做法。'
+            }
+        ];
+
+        function updateFormat(index) {
+            const data = formatData[index];
+            
+            // Update UI Elements
+            document.getElementById('security-score').textContent = data.score;
+            document.getElementById('security-score').className = `text-3xl font-black ${data.textColor}`;
+            
+            const bar = document.getElementById('security-bar');
+            bar.style.width = data.score;
+            bar.className = `h-full rounded-full relative overflow-hidden ${data.color}`;
+
+            const infoPanel = document.getElementById('format-info');
+            infoPanel.className = `bg-slate-900/80 rounded-2xl p-6 border-l-4 transition-all duration-300 ${data.borderColor}`;
+            
+            document.getElementById('info-title').innerHTML = `${data.icon} ${data.title}`;
+            document.getElementById('info-desc').innerHTML = data.desc;
+
+            // Reset buttons
+            document.querySelectorAll('.format-btn').forEach((btn, i) => {
+                if (i === index) {
+                    btn.className = `format-btn px-6 py-4 rounded-xl font-bold transition-all border-2 border-accent bg-accent/20 text-white shadow-[0_0_15px_rgba(6,182,212,0.3)]`;
+                } else {
+                    btn.className = `format-btn px-6 py-4 rounded-xl font-bold transition-all border-2 border-slate-600 text-slate-300 hover:bg-slate-700`;
+                }
+            });
+        }
+
+        // Accordion functionality
+        function toggleAccordion(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.icon');
+            const isOpen = content.classList.contains('open');
+
+            // Close all others
+            document.querySelectorAll('.accordion-content').forEach(el => {
+                el.style.maxHeight = null;
+                el.classList.remove('open');
+            });
+            document.querySelectorAll('.rule-card .icon').forEach(el => {
+                el.style.transform = 'rotate(0deg)';
+            });
+
+            if (!isOpen) {
+                content.classList.add('open');
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Open first accordion by default
+        window.addEventListener('DOMContentLoaded', () => {
+            const firstButton = document.querySelector('.rule-card button');
+            if (firstButton) toggleAccordion(firstButton);
+        });
+
+        // Scroll Reveal Logic using IntersectionObserver
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            });
+        }, revealOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            revealOnScroll.observe(el);
+        });
+    </script>
+</body>
+</html>
